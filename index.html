@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Pomodoro clock</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+  </head>
+
+<body>
+
+    
+  <h1>Another pomodoro clock</h1>
+  <div id="options">
+      <div id="break" class ="element">
+        <p>Break length</p>
+        
+        <span id="bsm"class="sign"> - </span><span id="breakSlice" class="slice"></span><span id="bsp" class="sign"> + </span>
+        
+      </div>
+      <div id="session" class ="element">
+        <p>Session length</p>
+        
+        <span id="ssm"class="sign"> - </span><span id="sessionSlice" class="slice"></span><span id="ssp" class="sign"> + </span>
+        
+
+      </div>
+  </div>
+  <div id="wrapper">
+      <canvas id="layer1" width="300" height="300"> </canvas> 
+      <canvas id="layer2" width="300" height="300"> </canvas> 
+  </div>
+  
+    
+</body>
+</html>
