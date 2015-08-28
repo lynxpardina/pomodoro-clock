@@ -13,6 +13,8 @@ $(document).ready(function() {
       sessionStorage.breakSlice =5;
       sessionStorage.phase = "Session";
       sessionStorage.seconds=60*sessionStorage.sessionSlice;
+      sessionStorage.percentage=0;
+      sessionStorage.hour=sessionStorage.sessionSlice;
   }
 
   $("#sessionSlice").html(sessionStorage.sessionSlice);
@@ -20,7 +22,7 @@ $(document).ready(function() {
 
   sessionStorage.phase ==="Session"? color=colorS: color=colorB;
 
-  draw(color, sessionStorage.seconds, sessionStorage.phase, sessionStorage.breakSlice);
+  draw();
   
 
   function countDown(){
@@ -46,12 +48,11 @@ $(document).ready(function() {
       h > 0? hora+=h +":"+(m<10?"0":""):"";
       m < 0? hora+="0" +m+":":hora+=m +":";
       s < 10? hora+="0" +s: hora+=s;
-      
-      var percentage= sessionStorage.phase === "Session"? sessionStorage.seconds/(60*sessionStorage.sessionSlice)*100:sessionStorage.seconds/(60*sessionStorage.breakSlice)*100;
+      sessionStorage.hour=hora;
 
-      //console.log(color+" "+ percentage+" "+ sessionStorage.phase+" "+hora);
+      sessionStorage.percentage= sessionStorage.phase === "Session"? sessionStorage.seconds/(60*sessionStorage.sessionSlice):sessionStorage.seconds/(60*sessionStorage.breakSlice);
 
-      draw(color, percentage, sessionStorage.phase, hora);
+      draw();
     
     }
 
@@ -64,8 +65,9 @@ $(document).ready(function() {
       sessionStorage.sessionSlice-=1;
       $("#sessionSlice").html(sessionStorage.sessionSlice);
       if (sessionStorage.phase==="Session") {
-        draw(colorS, 30, sessionStorage.phase, sessionStorage.sessionSlice);
         sessionStorage.seconds=60*sessionStorage.sessionSlice;
+        sessionStorage.hour = sessionStorage.sessionSlice;   
+        draw();
       };
     }
   });
@@ -74,8 +76,9 @@ $(document).ready(function() {
       sessionStorage.sessionSlice=eval(sessionStorage.sessionSlice)+1;
       $("#sessionSlice").html(sessionStorage.sessionSlice);
       if (sessionStorage.phase==="Session") {
-        draw(colorS, 30, sessionStorage.phase, sessionStorage.sessionSlice);
         sessionStorage.seconds=60*sessionStorage.sessionSlice;
+        sessionStorage.hour = sessionStorage.sessionSlice;
+        draw();
       };
     }
   });
@@ -84,8 +87,9 @@ $(document).ready(function() {
       sessionStorage.breakSlice-=1;
       $("#breakSlice").html(sessionStorage.breakSlice);
       if (sessionStorage.phase==="Break") {
-        draw(colorB, 30, sessionStorage.phase, sessionStorage.breakSlice);
         sessionStorage.seconds=60*sessionStorage.breakSlice;
+        sessionStorage.hour = sessionStorage.breakSlice;
+        draw();
       };
     }
   });
@@ -94,8 +98,9 @@ $(document).ready(function() {
       sessionStorage.breakSlice=eval(sessionStorage.breakSlice)+1;
       $("#breakSlice").html(sessionStorage.breakSlice);
       if (sessionStorage.phase==="Break") {
-        draw(colorB, 30, sessionStorage.phase, sessionStorage.breakSlice);
         sessionStorage.seconds=60*sessionStorage.breakSlice;
+        sessionStorage.hour = sessionStorage.breakSlice;
+        draw();
       };
     }
   });
@@ -110,8 +115,8 @@ $(document).ready(function() {
     }
   });
 
-  function draw (color, percentage, phase, hour){
-    // percentage is the fill value, varies from 0 to 100
+  function draw (){
+    
     ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
     
     var radius = 148;
@@ -122,7 +127,7 @@ $(document).ready(function() {
     ctx.stroke(); //draws the circle
 
     radius = 144,  
-    x=1-(percentage/100); //x varies between 0 and 1
+    x=1-sessionStorage.percentage; //x varies between 0 and 1
     ctx.beginPath();
     //console.log(x+" start: "+(0.5+x)+" end: "+ (0.5-x));
     ctx.arc(centerX, centerY, radius, Math.PI*(0.5+x), Math.PI*(0.5-x), true);
@@ -132,10 +137,10 @@ $(document).ready(function() {
     ctx.font = "45pt Abel";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText(phase, centerX, centerY-40);
+    ctx.fillText(sessionStorage.phase, centerX, centerY-40);
 
     ctx.font = "60pt Abel";
-    ctx.fillText(hour, centerX, centerY+80);
+    ctx.fillText(sessionStorage.hour, centerX, centerY+80);
   }
 
 
