@@ -13,7 +13,7 @@ $(document).ready(function() {
       sessionStorage.breakSlice =5;
       sessionStorage.phase = "Session";
       sessionStorage.seconds=60*sessionStorage.sessionSlice;
-      sessionStorage.percentage=0;
+      sessionStorage.percentage=1;
       sessionStorage.hour=sessionStorage.sessionSlice;
   }
 
@@ -66,7 +66,8 @@ $(document).ready(function() {
       $("#sessionSlice").html(sessionStorage.sessionSlice);
       if (sessionStorage.phase==="Session") {
         sessionStorage.seconds=60*sessionStorage.sessionSlice;
-        sessionStorage.hour = sessionStorage.sessionSlice;   
+        sessionStorage.hour = sessionStorage.sessionSlice;
+        sessionStorage.percentage=1;
         draw();
       };
     }
@@ -78,6 +79,7 @@ $(document).ready(function() {
       if (sessionStorage.phase==="Session") {
         sessionStorage.seconds=60*sessionStorage.sessionSlice;
         sessionStorage.hour = sessionStorage.sessionSlice;
+        sessionStorage.percentage=1;
         draw();
       };
     }
@@ -89,6 +91,7 @@ $(document).ready(function() {
       if (sessionStorage.phase==="Break") {
         sessionStorage.seconds=60*sessionStorage.breakSlice;
         sessionStorage.hour = sessionStorage.breakSlice;
+        sessionStorage.percentage=1;
         draw();
       };
     }
@@ -100,6 +103,7 @@ $(document).ready(function() {
       if (sessionStorage.phase==="Break") {
         sessionStorage.seconds=60*sessionStorage.breakSlice;
         sessionStorage.hour = sessionStorage.breakSlice;
+        sessionStorage.percentage=1;
         draw();
       };
     }
