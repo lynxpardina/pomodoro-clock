@@ -118,6 +118,21 @@ $(document).ready(function() {
       counting=false;
     }
   });
+  
+  $("#reset").click(function(){
+    
+    if (!counting){
+      sessionStorage.sessionSlice =25;
+      sessionStorage.breakSlice =5;
+      sessionStorage.phase = "Session";
+      sessionStorage.seconds=60*sessionStorage.sessionSlice;
+      sessionStorage.percentage=1;
+      sessionStorage.hour=sessionStorage.sessionSlice;
+      color=colorS;
+  
+      draw();
+    };
+  });
 
   function draw (){
     

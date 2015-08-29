@@ -1,6 +1,4 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/lynxpardina/pen/xwKXxJ.
-
- Pomodoro clock.  (A FreeCodeCamp.com Zipline task)
+Pomodoro clock.  (A FreeCodeCamp.com Zipline task)
 
 DESCRIPTION: 
 
@@ -10,7 +8,7 @@ USE:
 
   The clock is started/paused clicking over it. 
 
-  Length of session or break can be changed when the clock is paused. If the actual slice of time is changed the clock resets to the value selected. 
+  Length of session or break can be changed when the clock is paused. Reset also works only when the clock is paused. If the actual slice of time is changed the clock resets to the value selected. 
 
   When a slice of time ends, a sound is played and the next slice started.
 

@@ -19,27 +19,33 @@ body {
 }
  
 #options .element{
-  	display: inline-block;
-  	padding-right: 12px;
-  	padding-left: 12px;
+    display: inline-block;
+    padding-right: 12px;
+    padding-left: 12px;
 }
 .sign {
- 	font-size: larger;
- 	font-weight: bold;
- 	cursor: pointer;
- 	padding: 5px;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
 }
 
-#options ::-moz-selection { /* Code for Firefox */
+::-moz-selection { /* Code for Firefox */
     background: #333; /* to change the selected background color */
 }
 
-#options ::selection {
+::selection {
     /*color: red;*/
     background: #333;
 }
 
 .slice {
- 	font-size: larger;
- 	padding: 5px;
+  font-size: larger;
+  padding: 5px;
+}
+
+#reset{
+  padding-top: 30px;
+  color: red;
+  cursor: pointer;
 }
