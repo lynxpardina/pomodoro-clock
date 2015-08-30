@@ -1,4 +1,6 @@
 $(document).ready(function() { 
+ $(window).load(function(){
+
   var myCanvas=$("#myCanvas")[0],
       ctx = myCanvas.getContext("2d"), 
       centerX = myCanvas.width / 2,
@@ -129,7 +131,8 @@ $(document).ready(function() {
       sessionStorage.percentage=1;
       sessionStorage.hour=sessionStorage.sessionSlice;
       color=colorS;
-  
+      $("#breakSlice").html(sessionStorage.breakSlice);
+      $("#sessionSlice").html(sessionStorage.sessionSlice);
       draw();
     };
   });
@@ -169,5 +172,5 @@ $(document).ready(function() {
       "<source src='"+sonido+".mp3' type='audio/mpeg'>"+
       "</audio>").appendTo('body');
   }         
-  
+ });  
 });
